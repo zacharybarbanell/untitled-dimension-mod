@@ -1,31 +1,30 @@
 {
 	"schemaVersion": 1,
-	"id": "modid",
+	"id": "untitled_dimension_mod",
 	"version": "${version}",
-	"name": "Example mod",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"name": "Untitled Dimension Mod",
+	"description": "TODO",
 	"authors": [
-		"Me!"
+		"Zachary Barbanell"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"sources": "https://github.com/zacharybarbanell/untitled-dimension-mod"
 	},
-	"license": "CC0-1.0",
-	"icon": "assets/modid/icon.png",
+	"license": "MIT",
+	"icon": "assets/dimmod/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"com.example.ExampleMod"
+			"com.zacharybarbanell.dimmod.ExampleMod"
 		],
 		"client": [
-			"com.example.ExampleModClient"
+			"com.zacharybarbanell.dimmod.ExampleModClient"
 		]
 	},
 	"mixins": [
-		"modid.mixins.json",
+		"dimmod.mixins.json",
 		{
-			"config": "modid.client.mixins.json",
+			"config": "dimmod.client.mixins.json",
 			"environment": "client"
 		}
 	],
@@ -37,5 +36,6 @@
 	},
 	"suggests": {
 		"another-mod": "*"
-	}
+	},
+	"accessWidener": "dimmod.accesswidener"
 }
