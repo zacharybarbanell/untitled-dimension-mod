@@ -45,7 +45,7 @@ public class PortalBlock extends BlockWithEntity {
                                 (double) (-pos.getY()), (double) (-pos.getZ()))),
                         state.getOutlineShape(world, pos), BooleanBiFunction.AND)
                 && entity.getVelocity().y <= 0) {
-            // TODO
+            // TODO this is where the code that sends the player somewhere goes
         }
     }
 
@@ -57,7 +57,7 @@ public class PortalBlock extends BlockWithEntity {
     @Override
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
         if(direction.getAxis().isHorizontal()) {
-            if(!neighborState.isOf(ExampleMod.PORTAL_BLOCK) && !neighborState.isSideSolidFullSquare(world, neighborPos, direction.getOpposite())) {
+            if(!neighborState.isOf(this) && !neighborState.isSideSolidFullSquare(world, neighborPos, direction.getOpposite())) {
                 return Blocks.AIR.getDefaultState();
             }
         } 
@@ -70,10 +70,19 @@ public class PortalBlock extends BlockWithEntity {
             Direction dir = Direction.fromHorizontal(i);
             BlockPos otherPos = pos.offset(dir);
             BlockState otherState = world.getBlockState(otherPos);
-            if (!otherState.isOf(ExampleMod.PORTAL_BLOCK) && !otherState.isSideSolidFullSquare(world, otherPos, dir.getOpposite())) {
+            if (!otherState.isOf(this) && !otherState.isSideSolidFullSquare(world, otherPos, dir.getOpposite())) {
                 return false;
             }
         }
         return true;
+    }
+
+    public int distToEdge(WorldView world, BlockPos pos, Direction dir) {
+        int i = 0;
+        while (world.getBlockState(pos.offset(dir)).isOf(this)) {
+            pos = pos.offset(dir);
+            i++;
+        }
+        return i;
     }
 }

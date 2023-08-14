@@ -1,7 +1,6 @@
 package com.zacharybarbanell.dimmod;
 
 import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.CoreShaderRegistrationCallback;
 import net.minecraft.client.gl.ShaderProgram;
 import net.minecraft.client.render.RenderLayer;
@@ -16,7 +15,7 @@ public class ExampleModClient implements ClientModInitializer {
 
 	public static final RenderLayer portalLayer = RenderLayer.of(
 			"dimmod$portal",
-			VertexFormats.POSITION,
+			VertexFormats.POSITION_COLOR,
 			DrawMode.QUADS,
 			256,
 			false,
